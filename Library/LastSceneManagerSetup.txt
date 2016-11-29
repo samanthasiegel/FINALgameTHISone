@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/EntranceHallTemplate.unity
+- path: Assets/Scenes/KitchenTemplate.unity
   isLoaded: 1
   isActive: 1
