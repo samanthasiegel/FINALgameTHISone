@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\ExitScript2.cs" />
      <Compile Include="Assets\Scripts\GameManagerScript1.cs" />
      <Compile Include="Assets\Scripts\GaryScript_Scene1.cs" />
+     <Compile Include="Assets\Scripts\GaryScript_Scene2.cs" />
      <Compile Include="Assets\Scripts\HeroScript.cs" />
      <Compile Include="Assets\Scripts\InstructionsScript.cs" />
      <Compile Include="Assets\Scripts\InteractionGraph.cs" />
