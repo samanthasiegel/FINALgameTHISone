@@ -14,10 +14,10 @@ public class BookshelfScript_Scene1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			DialogueText.font = ItalicFont;
-			DialogueText.text = "You see a small collection of Jon's books, including titles like "+ 
-				"'Why Fossil Feuls Are The Best' and 'Global Warming Was a Hoax Started by the Chinese.'";
-		}
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			DialogueText.font = ItalicFont;
+//			DialogueText.text = "You see a small collection of Jon's books, including titles like "+ 
+//				"'Why Fossil Feuls Are The Best' and 'Global Warming Was a Hoax Started by the Chinese.'";
+//		}
 	}
 }

@@ -14,11 +14,11 @@ public class DrinksScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			DialogueText.font = ItalicFont;
-			DialogueText.text = "You see a few cups of wine.  It looks like someone drank from the cup on the far right. " +
-				"You could really use some wine right now...";
-		}
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			DialogueText.font = ItalicFont;
+//			DialogueText.text = "You see a few cups of wine.  It looks like someone drank from the cup on the far right. " +
+//				"You could really use some wine right now...";
+//		}
 
 	}
 }

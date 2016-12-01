@@ -27,9 +27,9 @@ public class GobScript_Scene2 : MonoBehaviour {
 	}
 
 	void Update(){
-		if (GetComponent<SpriteScript>().InDialogue && ShowQuestions) {
-			Graph.UpdateUI (JustText, ButtonContainer);
-		}
+//		if (GetComponent<SpriteScript>().InDialogue && ShowQuestions) {
+//			Graph.UpdateUI (JustText, ButtonContainer);
+//		}
 	}
 
 	public void Option1Clicked(){

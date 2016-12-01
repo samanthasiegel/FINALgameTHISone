@@ -13,9 +13,9 @@ public class BarryScript_Scene1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			DialogueText.text = "I... am so honored... to be... here!";
-		}
-	
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			DialogueText.text = "I... am so honored... to be... here!";
+//		}
+//	
 	}
 }

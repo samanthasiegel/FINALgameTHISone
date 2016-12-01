@@ -13,11 +13,11 @@ public class LizScript_Scene1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			DialogueText.text = "I'm feeling a little suspicious about this dinnner, something isn't right." +
-			" We haven't spoken to any of these people since high school! I think Gary wanted to say hi" +
-			" to you before dinner starts...";
-		}
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			DialogueText.text = "I'm feeling a little suspicious about this dinnner, something isn't right." +
+//			" We haven't spoken to any of these people since high school! I think Gary wanted to say hi" +
+//			" to you before dinner starts...";
+//		}
 	
 	}
 		

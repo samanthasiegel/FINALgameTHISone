@@ -13,8 +13,8 @@ public class RonaldScript_Scene1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			DialogueText.text = "I never really liked any of you in high school. Especially Liz, such a nasty woman.";
-		}
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			DialogueText.text = "I never really liked any of you in high school. Especially Liz, such a nasty woman.";
+//		}
 	}
 }

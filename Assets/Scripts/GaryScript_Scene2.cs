@@ -16,19 +16,19 @@ public class GaryScript_Scene2 : MonoBehaviour {
 	public GameObject[] children;
 
 	void Update(){
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			if (ShowRoot) {
-				JustText.text = "";
-				MultiDialogue.SetActive (true);
-				ShowRoot = false;
-				RootDialogue.SetActive (true);
-			} else if (Input.GetKey (KeyCode.X)) {
-				ShowRoot = true;
-				for (int i = 0; i < children.Length; i++) {
-					children [i].SetActive (false);
-				}
-			}
-		} 
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			if (ShowRoot) {
+//				JustText.text = "";
+//				MultiDialogue.SetActive (true);
+//				ShowRoot = false;
+//				RootDialogue.SetActive (true);
+//			} else if (Input.GetKey (KeyCode.X)) {
+//				ShowRoot = true;
+//				for (int i = 0; i < children.Length; i++) {
+//					children [i].SetActive (false);
+//				}
+//			}
+//		} 
 
 	}
 

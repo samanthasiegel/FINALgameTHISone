@@ -5,55 +5,65 @@ using System.Collections.Generic;
 
 public class HeroScript : MonoBehaviour{
 
-	/* Handles player movement */
+	/** GLOBAL VARIABLES ***************************/
+
+	// Handles player movement
 	public float playerSpeed = 200f;
 	private Rigidbody2D rb2d;
 
-	/* List of sprites and objects Player must interact with in scene */
-	public List<string> SpriteTags = new List<string>();
-	public List<string> ObjectTags = new List<string>();
+	// Handles interaction with other scene objects
 	[HideInInspector] public HashSet<string> Visited = new HashSet<string>();
 	public LayerMask layerMask;
-
-	/* Name of next room in story */
-	public string NextRoom;
-
-	/* Text in lower left of screen to indicate when Player can interact with objects in scene */
-	public Text NotificationText;
-
-	/* Handles when player in dialogue with another scene object */
 	private string CollidedTag;
-	private bool InDialogue = false;
 
+	// Detects type of object player collides with
+	private int SpriteLayer = 10;
+	private int ObjectLayer = 11;
+	private int ExitLayer = 12;
+
+	// Sets/disables UI
+	public Text NotificationText;
+	public GameObject DialogueContainer, SingleDialogue, MultiDialogue;
+	public Font StartFont;
+
+	// Detects if player in dialogue 
+	private bool InDialogue = true;
+
+	// Initial quote displayed in each scene
+	public string StartQuote;
+
+
+
+	/** FUNCTIONS *********************************/
+
+	// Display start text
 	void Start(){
 		rb2d = GetComponent<Rigidbody2D>();
+		DialogueContainer.SetActive (true);
+		Text SingleText = SingleDialogue.GetComponentInChildren<Text> ();
+		SingleText.text = StartQuote;
+		SingleText.font = StartFont;
 	}
 
 	void Update(){
-		// Start or stop dialogue if we're colliding with another scene object
+		// Start dialogue if we're colliding with another scene object
 		if(CollidedTag != null){
 			GameObject CollidedObject = GameObject.FindGameObjectWithTag(CollidedTag);
 			if(Input.GetKey(KeyCode.Space)){
 				InDialogue = true;
-				CollidedObject.GetComponent<SpriteScript>().StartDialogue();
-			}
-			else if(Input.GetKey(KeyCode.X)){
-				ExitDialogue (CollidedObject);
+				if (CollidedObject.gameObject.layer == ExitLayer) {
+					CollidedObject.GetComponent<ExitScript> ().CheckConditionsToExit ();
+				} 
+				CollidedObject.GetComponent<SpriteScript> ().StartDialogue ();
 			}
 		}
 	}
 
-	public void ExitDialogue(GameObject CollidedObject){
-		InDialogue = false;
-		CollidedObject.GetComponent<SpriteScript> ().ExitDialogue ();
-	}
-
 	void FixedUpdate(){
-		// Player movement
 		rb2d.velocity = new Vector2(0,0);
 		if (!InDialogue) {
+			// Player movement
 			MoveHero ();
-
 			// Raycast detection of other game objects
 			Vector2[] VectorList = { Vector2.left, Vector2.right, Vector2.up };
 			for (int i = 0; i < VectorList.Length; i++) {
@@ -66,7 +76,7 @@ public class HeroScript : MonoBehaviour{
 	}
 
 
-	/* Moves player based on input from keyboard arrow keys */
+	// Moves player based on input from keyboard arrow keys
 	void MoveHero(){
 		if(Input.GetKey("up")){
 			rb2d.AddForce(Vector2.up * playerSpeed);
@@ -85,27 +95,29 @@ public class HeroScript : MonoBehaviour{
 		}
 	}
 
-	/* Sends raycast to detect sprites or objects in the scene, and sets notification text accordingly */
+	// Sends raycast to detect collisions
 	bool SendRaycast(Vector2 vector){
-		Collider2D hit = Physics2D.OverlapCircle (transform.position, 1.5f, layerMask);
+		Collider2D hit = Physics2D.OverlapCircle (transform.position, 2.5f, layerMask);
 		if(hit != null ){
 			string tag = hit.gameObject.tag;
 
 			// If collided object is a sprite, set notification
-			if(SpriteTags.Contains(tag)){
+			if(hit.gameObject.layer == SpriteLayer){
 				NotificationText.text = "Talk to " + tag;
 				CollidedTag = tag;
 				return true;
 			}
+
 			// If collided object is a scene object, set notification
-			if(ObjectTags.Contains(tag)){
+			if(hit.gameObject.layer == ObjectLayer){
 				NotificationText.text = "Look at " + tag.ToLower();
 				CollidedTag = tag;
 				return true;
 			}
+
 			// If collided object is the exit, set notification
-			if(tag.Equals("Exit")){
-				NotificationText.text = "Move to " + NextRoom;
+			if(hit.gameObject.layer == ExitLayer){
+				NotificationText.text = "Move to the " + hit.gameObject.GetComponent<ExitScript>().Room;
 				CollidedTag = tag;
 				return true;
 			}
@@ -115,5 +127,19 @@ public class HeroScript : MonoBehaviour{
 		CollidedTag = null;
 		return false;
 	}
+
+	// Reset dialogue UI on exit
+	public void ExitDialogueClicked(){
+		InDialogue = false;
+		if(CollidedTag != null){
+			GameObject CollidedObject = GameObject.FindGameObjectWithTag (CollidedTag);
+			CollidedObject.GetComponent<SpriteScript> ().ExitDialogue ();
+			if (!CollidedTag.Equals ("Exit")) {
+				Visited.Add (CollidedTag);
+			}
+		}
+
+	}
+
 
 }

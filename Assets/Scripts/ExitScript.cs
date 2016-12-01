@@ -5,34 +5,57 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ExitScript : MonoBehaviour {
+	
+	/** GLOBAL VARIABLES ***************************/
 
-	public GameObject DialogueContainer;
-	public Text DialogueText;
-	public Font font;
+	// Handle changes to UI
+	public GameObject DialogueContainer, SingleDialogue;
+	public Font QuoteFont;
 
-	/* Loads next seen if all Player has completed objectives in current scene */
-	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			DialogueText.font = font;
-			HashSet<string> visited = GameObject.FindGameObjectWithTag("Hero").GetComponent<HeroScript>().Visited;
-			if (!visited.Contains ("Liz Battleon")) {
-				DialogueContainer.SetActive (true);
-				DialogueText.text = "You should talk to Liz before leaving the room.";
-				return;
-			} else if (!visited.Contains ("Gary Williams")) {
-				DialogueContainer.SetActive (true);
-				DialogueText.text = "Didn't Liz say Gary wanted to speak with you?";
-				return;
-			}
-			if (visited.Count < 3) {
-				DialogueContainer.SetActive (true);
-				DialogueText.text = "I have this nagging feeling like I'm forgetting something in this room..."
-				+ "Did I talk to everyone? That bookshelf looks interesting too.";
-				return;
-			}
-			DialogueContainer.SetActive (false);
-			SceneManager.LoadScene (3);
+	// Text to display
+	public string Room;
+	public string WarningMessage;
+
+	// Check required objects player must interact with before advancing
+	public string[] RequiredInteractions;
+	public bool ActiveExit;
+	private HashSet<string> VisitedSet;
+
+	public int NextScene;
+
+	/** FUNCTIONS **********************************/
+
+	// Initialize visited global variable
+	void Start(){
+		VisitedSet = GameObject.FindGameObjectWithTag ("Hero").GetComponent<HeroScript> ().Visited;
+	}
+
+	// Check if player interacted with all required objects before moving to next level
+	public void CheckConditionsToExit(){
+		if (!ActiveExit) { 
+			// Impossible to move to this room in the scene
+			DisplayMessage ();
+			return;
 		}
+		foreach(string tag in RequiredInteractions){
+			if (!VisitedSet.Contains (tag)) { 
+				// Still need to interact with objects in scene
+				DisplayMessage();
+				return;
+			}
+		}
+		// Move onto next level
+		SceneManager.LoadScene (NextScene);
+		
+	}
 
+	// Change UI to display relevant message
+	void DisplayMessage(){
+		DialogueContainer.SetActive (true);
+		SingleDialogue.SetActive (true);
+		Text SingleText = SingleDialogue.GetComponentInChildren<Text> ();
+		SingleText.font = QuoteFont;
+		SingleText.text = WarningMessage;
+		return;
 	}
 }

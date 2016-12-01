@@ -14,14 +14,14 @@ public class ConditionalDialogueScript : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (GetComponent<SpriteScript> ().InDialogue) {
-			
-			if (Trigger.activeSelf) {
-				CurrQuote = Quote2;
-			}
-			DialogueText.text = CurrQuote;
-			DialogueText.font = font;
-		}
-	}
+//	void Update () {
+//		if (GetComponent<SpriteScript> ().InDialogue) {
+//			
+//			if (Trigger.activeSelf) {
+//				CurrQuote = Quote2;
+//			}
+//			DialogueText.text = CurrQuote;
+//			DialogueText.font = font;
+//		}
+//	}
 }

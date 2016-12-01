@@ -30,9 +30,9 @@ public class GaryScript_Scene1 : MonoBehaviour {
 	}
 
 	void Update(){
-		if (GetComponent<SpriteScript>().InDialogue && ShowQuestions) {
-			Graph.UpdateUI (JustText, ButtonContainer);
-		}
+//		if (GetComponent<SpriteScript>().InDialogue && ShowQuestions) {
+//			Graph.UpdateUI (JustText, ButtonContainer);
+//		}
 	}
 
 	public void Option1Clicked(){
