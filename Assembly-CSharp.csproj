@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GobScript_Scene2.cs" />
+     <Compile Include="Assets\Scripts\ConditionalDialogueScript.cs" />
      <Compile Include="Assets\Scripts\DialogueScript.cs" />
      <Compile Include="Assets\Scripts\DrinksScript.cs" />
      <Compile Include="Assets\Scripts\ExitScript.cs" />
@@ -53,6 +54,7 @@
      <Compile Include="Assets\Scripts\GameManagerScript1.cs" />
      <Compile Include="Assets\Scripts\GaryScript_Scene1.cs" />
      <Compile Include="Assets\Scripts\GaryScript_Scene2.cs" />
+     <Compile Include="Assets\Scripts\GaryScript_Scene3.cs" />
      <Compile Include="Assets\Scripts\HeroScript.cs" />
      <Compile Include="Assets\Scripts\InstructionsScript.cs" />
      <Compile Include="Assets\Scripts\InteractionGraph.cs" />

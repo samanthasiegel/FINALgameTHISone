@@ -38,10 +38,14 @@ public class HeroScript : MonoBehaviour{
 				CollidedObject.GetComponent<SpriteScript>().StartDialogue();
 			}
 			else if(Input.GetKey(KeyCode.X)){
-				InDialogue = false;
-				CollidedObject.GetComponent<SpriteScript>().ExitDialogue();
+				ExitDialogue (CollidedObject);
 			}
 		}
+	}
+
+	public void ExitDialogue(GameObject CollidedObject){
+		InDialogue = false;
+		CollidedObject.GetComponent<SpriteScript> ().ExitDialogue ();
 	}
 
 	void FixedUpdate(){
