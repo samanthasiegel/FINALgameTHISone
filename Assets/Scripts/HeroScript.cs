@@ -14,7 +14,7 @@ public class HeroScript : MonoBehaviour{
 	// Handles interaction with other scene objects
 	[HideInInspector] public HashSet<string> Visited = new HashSet<string>();
 	public LayerMask layerMask;
-	private string CollidedTag;
+	private GameObject CollidedObject;
 
 	// Detects type of object player collides with
 	private int SpriteLayer = 10;
@@ -27,10 +27,12 @@ public class HeroScript : MonoBehaviour{
 	public Font StartFont;
 
 	// Detects if player in dialogue 
-	private bool InDialogue = true;
+	[HideInInspector] public bool InDialogue = true;
 
 	// Initial quote displayed in each scene
 	public string StartQuote;
+
+	private bool CompleteWithScene;
 
 
 
@@ -47,8 +49,7 @@ public class HeroScript : MonoBehaviour{
 
 	void Update(){
 		// Start dialogue if we're colliding with another scene object
-		if(CollidedTag != null){
-			GameObject CollidedObject = GameObject.FindGameObjectWithTag(CollidedTag);
+		if(CollidedObject != null){
 			if(Input.GetKey(KeyCode.Space)){
 				InDialogue = true;
 				if (CollidedObject.gameObject.layer == ExitLayer) {
@@ -104,38 +105,37 @@ public class HeroScript : MonoBehaviour{
 			// If collided object is a sprite, set notification
 			if(hit.gameObject.layer == SpriteLayer){
 				NotificationText.text = "Talk to " + tag;
-				CollidedTag = tag;
+				CollidedObject = hit.gameObject;
 				return true;
 			}
 
 			// If collided object is a scene object, set notification
 			if(hit.gameObject.layer == ObjectLayer){
 				NotificationText.text = "Look at " + tag.ToLower();
-				CollidedTag = tag;
+				CollidedObject = hit.gameObject;
 				return true;
 			}
 
 			// If collided object is the exit, set notification
 			if(hit.gameObject.layer == ExitLayer){
 				NotificationText.text = "Move to the " + hit.gameObject.GetComponent<ExitScript>().Room;
-				CollidedTag = tag;
+				CollidedObject = hit.gameObject;
 				return true;
 			}
 		}
 		// If no collided object, reset notification to be empty
 		NotificationText.text = "";
-		CollidedTag = null;
+		CollidedObject = null;
 		return false;
 	}
 
 	// Reset dialogue UI on exit
 	public void ExitDialogueClicked(){
 		InDialogue = false;
-		if(CollidedTag != null){
-			GameObject CollidedObject = GameObject.FindGameObjectWithTag (CollidedTag);
+		if(CollidedObject != null){
 			CollidedObject.GetComponent<SpriteScript> ().ExitDialogue ();
-			if (!CollidedTag.Equals ("Exit")) {
-				Visited.Add (CollidedTag);
+			if (!CollidedObject.CompareTag("Exit")) {
+				Visited.Add (CollidedObject.tag);
 			}
 		}
 

@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EndDialogueController.cs" />
      <Compile Include="Assets\GobScript_Scene2.cs" />
-     <Compile Include="Assets\Scripts\ConditionalDialogueScript.cs" />
+     <Compile Include="Assets\Scripts\ConditionalDialogueController.cs" />
      <Compile Include="Assets\Scripts\DialogueScript.cs" />
      <Compile Include="Assets\Scripts\DrinksScript.cs" />
      <Compile Include="Assets\Scripts\ExitScript.cs" />

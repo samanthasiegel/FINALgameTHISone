@@ -18,7 +18,7 @@ public class ExitScript : MonoBehaviour {
 
 	// Check required objects player must interact with before advancing
 	public string[] RequiredInteractions;
-	public bool ActiveExit;
+	public bool ActiveExit = false;
 	private HashSet<string> VisitedSet;
 
 	public int NextScene;
@@ -36,17 +36,26 @@ public class ExitScript : MonoBehaviour {
 			// Impossible to move to this room in the scene
 			DisplayMessage ();
 			return;
-		}
-		foreach(string tag in RequiredInteractions){
-			if (!VisitedSet.Contains (tag)) { 
-				// Still need to interact with objects in scene
-				DisplayMessage();
-				return;
-			}
+		} else if (!RequiredInteractionsComplete ()) {
+			// Still need to interact with objects in scene
+			DisplayMessage ();
+			return;
 		}
 		// Move onto next level
-		SceneManager.LoadScene (NextScene);
+		else {
+			SceneManager.LoadScene (NextScene);
+		}
 		
+	}
+
+	// Return true if player interacted with all required objects, false otherwise
+	public bool RequiredInteractionsComplete(){
+		foreach (string tag in RequiredInteractions) {
+			if (!VisitedSet.Contains (tag)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	// Change UI to display relevant message
