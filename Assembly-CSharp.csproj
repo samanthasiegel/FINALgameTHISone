@@ -45,34 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EndDialogueController.cs" />
-     <Compile Include="Assets\GobScript_Scene2.cs" />
      <Compile Include="Assets\Scripts\ConditionalDialogueController.cs" />
-     <Compile Include="Assets\Scripts\DialogueScript.cs" />
-     <Compile Include="Assets\Scripts\DrinksScript.cs" />
+     <Compile Include="Assets\Scripts\EndDialogueController.cs" />
      <Compile Include="Assets\Scripts\ExitScript.cs" />
      <Compile Include="Assets\Scripts\ExitScript2.cs" />
      <Compile Include="Assets\Scripts\GameManagerScript1.cs" />
-     <Compile Include="Assets\Scripts\GaryScript_Scene1.cs" />
-     <Compile Include="Assets\Scripts\GaryScript_Scene2.cs" />
-     <Compile Include="Assets\Scripts\GaryScript_Scene3.cs" />
      <Compile Include="Assets\Scripts\HeroScript.cs" />
-     <Compile Include="Assets\Scripts\InstructionsScript.cs" />
-     <Compile Include="Assets\Scripts\InteractionGraph.cs" />
-     <Compile Include="Assets\Scripts\InteractionNode.cs" />
-     <Compile Include="Assets\Scripts\IntroScript.cs" />
      <Compile Include="Assets\Scripts\MichelleScript_Scene2.cs" />
      <Compile Include="Assets\Scripts\MultiDialogueController.cs" />
-     <Compile Include="Assets\Scripts\Old\BarryScript_Scene1.cs" />
-     <Compile Include="Assets\Scripts\Old\BookshelfScript_Scene1.cs" />
-     <Compile Include="Assets\Scripts\Old\HeroScript3.cs" />
-     <Compile Include="Assets\Scripts\Old\LizScript_Scene1.cs" />
-     <Compile Include="Assets\Scripts\Old\RonaldScript_Scene1.cs" />
-     <Compile Include="Assets\Scripts\Old\SpriteScript2.cs" />
-     <Compile Include="Assets\Scripts\ProgressNode.cs" />
+     <Compile Include="Assets\Scripts\NextSceneScript.cs" />
      <Compile Include="Assets\Scripts\SceneControllerScript.cs" />
      <Compile Include="Assets\Scripts\SingleLineController.cs" />
-     <Compile Include="Assets\Scripts\SpriteNode.cs" />
      <Compile Include="Assets\Scripts\SpriteScript.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
