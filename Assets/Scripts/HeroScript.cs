@@ -23,14 +23,10 @@ public class HeroScript : MonoBehaviour{
 
 	// Sets/disables UI
 	public Text NotificationText;
-	public GameObject DialogueContainer, SingleDialogue, MultiDialogue;
-	public Font StartFont;
+	public GameObject SingleDialogue, MultiDialogue;
 
 	// Detects if player in dialogue 
 	[HideInInspector] public bool InDialogue = true;
-
-	// Initial quote displayed in each scene
-	public string StartQuote;
 
 	private bool CompleteWithScene;
 
@@ -41,10 +37,6 @@ public class HeroScript : MonoBehaviour{
 	// Display start text
 	void Start(){
 		rb2d = GetComponent<Rigidbody2D>();
-		DialogueContainer.SetActive (true);
-		Text SingleText = SingleDialogue.GetComponentInChildren<Text> ();
-		SingleText.text = StartQuote;
-		SingleText.font = StartFont;
 	}
 
 	void Update(){
@@ -111,7 +103,7 @@ public class HeroScript : MonoBehaviour{
 
 			// If collided object is a scene object, set notification
 			if(hit.gameObject.layer == ObjectLayer){
-				NotificationText.text = "Look at " + tag.ToLower();
+				NotificationText.text = "Look at the " + tag.ToLower();
 				CollidedObject = hit.gameObject;
 				return true;
 			}
