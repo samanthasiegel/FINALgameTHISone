@@ -45,20 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ConditionalDialogueController.cs" />
-     <Compile Include="Assets\Scripts\EndDialogueController.cs" />
+     <Compile Include="Assets\Scripts\Dialogue Scripts\EndDialogueController.cs" />
+     <Compile Include="Assets\Scripts\Dialogue Scripts\MultiDialogueController.cs" />
+     <Compile Include="Assets\Scripts\Dialogue Scripts\SingleLineController.cs" />
      <Compile Include="Assets\Scripts\ExitScript.cs" />
-     <Compile Include="Assets\Scripts\ExitScript2.cs" />
-     <Compile Include="Assets\Scripts\GameManagerScript1.cs" />
+     <Compile Include="Assets\Scripts\FinalSceneScript.cs" />
      <Compile Include="Assets\Scripts\HeroScript.cs" />
-     <Compile Include="Assets\Scripts\MichelleScript_Scene2.cs" />
-     <Compile Include="Assets\Scripts\MultiDialogueController.cs" />
-     <Compile Include="Assets\Scripts\NextSceneScript.cs" />
-     <Compile Include="Assets\Scripts\PlayAgainScript.cs" />
-     <Compile Include="Assets\Scripts\SceneControllerScript.cs" />
-     <Compile Include="Assets\Scripts\SingleLineController.cs" />
+     <Compile Include="Assets\Scripts\LoadSceneScript.cs" />
      <Compile Include="Assets\Scripts\SpriteScript.cs" />
-     <Compile Include="Assets\Scripts\TextController.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\NextSceneScript.cs" />
+     <Compile Include="Assets\Scripts\UI Scripts\TextController.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
