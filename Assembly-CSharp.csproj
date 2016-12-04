@@ -54,9 +54,11 @@
      <Compile Include="Assets\Scripts\MichelleScript_Scene2.cs" />
      <Compile Include="Assets\Scripts\MultiDialogueController.cs" />
      <Compile Include="Assets\Scripts\NextSceneScript.cs" />
+     <Compile Include="Assets\Scripts\PlayAgainScript.cs" />
      <Compile Include="Assets\Scripts\SceneControllerScript.cs" />
      <Compile Include="Assets\Scripts\SingleLineController.cs" />
      <Compile Include="Assets\Scripts\SpriteScript.cs" />
+     <Compile Include="Assets\Scripts\TextController.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>

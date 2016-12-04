@@ -9,6 +9,7 @@ public class EndDialogueController : MonoBehaviour {
 	// Handle UI of end message
 	public GameObject ExitTrigger, DialogueContainer, ExitContainer;
 	[HideInInspector] public bool Displayed = false;
+	public AudioSource SoundEffect;
 
 
 	/** FUNCTIONS **********************************/
@@ -16,10 +17,12 @@ public class EndDialogueController : MonoBehaviour {
 	// Display end message if all required objects interacted with
 	void Update () {
 		if (ExitTrigger.GetComponent<ExitScript> ().RequiredInteractionsComplete () && !Displayed) {
-			GameObject.FindGameObjectWithTag ("Hero").GetComponent<HeroScript> ().InDialogue = true;
+			GameObject Hero = GameObject.FindGameObjectWithTag ("Hero");
+			Hero.GetComponent<HeroScript> ().InDialogue = true;
 			DialogueContainer.SetActive (true);
 			ExitContainer.SetActive (true);
 			Displayed = true;
+			SoundEffect.PlayOneShot (SoundEffect.clip);
 		}
 	}
 }
